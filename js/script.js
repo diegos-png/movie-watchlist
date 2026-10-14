@@ -6,12 +6,17 @@ const movieList = document.getElementById("movieList");
 const emptyMessage = document.getElementById("emptyListMsg");
 
 const watchlist = {
-  movies: [{ title: "The Princess Bride", genre: "Adventure", watched: false }],
+  movies: [{ title: "The Princess Bride", genre: "Adventure", watched: false }, {title: "test", genre: "test", watched: false}],
+  markFinished(index) {
+    this.movies[index].watched = !this.movies[index].watched;
+  },
   toggleWatched(index) {
     // TODO (Step 4)
+    this.markFinished(index);
   },
   removeMovie(index) {
     // TODO (Step 4)
+    this.movies.splice(index, 1)
   }
 };
 
