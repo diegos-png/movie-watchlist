@@ -6,7 +6,7 @@ const movieList = document.getElementById("movieList");
 const emptyMessage = document.getElementById("emptyListMsg");
 
 const watchlist = {
-  movies: [{ title: "The Princess Bride", genre: "Adventure", watched: false }, {title: "test", genre: "test", watched: false}],
+  movies: [{ title: "The Princess Bride", genre: "Adventure", watched: false }, { title: "test", genre: "test", watched: false }],
   markFinished(index) {
     this.movies[index].watched = !this.movies[index].watched;
   },
@@ -22,6 +22,7 @@ const watchlist = {
 
 function saveMovies() {
   // TODO (Step 6)
+
 }
 
 function loadMovies() {
@@ -38,7 +39,7 @@ function renderMovies() {
     title.textContent = movie.title;
 
     const details = document.createElement("p");
-    details.textContent = movie.watched ? "Watched" : "Not watched";
+    details.textContent = `${movie.genre} • ${movie.watched ? "Watched" : "Not watched"}`
 
     const toggleButton = document.createElement("button");
     toggleButton.type = "button";
@@ -72,6 +73,27 @@ function renderMovies() {
 
 form.addEventListener("submit", (event) => {
   // TODO (Step 5)
+  event.preventDefault();
+
+  // saving title and genred
+  const addMovieTitle = titleInput.value.trim()
+  const addGenreSelect = genreSelect.value
+
+  if (addMovieTitle == "") {
+    message.textContent = "Enter a movie title."
+    return;
+  }
+  else if (addGenreSelect == "Choose a genre") {
+    message.textContent = "Choose a genre."
+    return;
+  }
+  else {
+    watchlist.movies.push({ title: addMovieTitle, genre: addGenreSelect, watched: false })
+    message.textContent = ""
+    titleInput.value = ""
+  }
+  saveMovies();
+  renderMovies();
 });
 
 loadMovies();
