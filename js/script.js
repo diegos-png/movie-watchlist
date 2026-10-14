@@ -22,11 +22,28 @@ const watchlist = {
 
 function saveMovies() {
   // TODO (Step 6)
+  let jsonString = JSON.stringify(watchlist.movies)
 
+  localStorage.setItem("movies", jsonString)
 }
 
 function loadMovies() {
   // TODO (Step 6)
+
+  let storedData = localStorage.getItem("movies")
+  if (!storedData) {
+    return
+  }
+  try {
+    let parsedData = JSON.parse(storedData)
+
+    watchlist.movies = parsedData
+  }
+  catch {
+    watchlist.movies = []
+  }
+
+
 }
 
 function renderMovies() {
@@ -98,3 +115,4 @@ form.addEventListener("submit", (event) => {
 
 loadMovies();
 renderMovies();
+genreSelect.selectedIndex = 0
