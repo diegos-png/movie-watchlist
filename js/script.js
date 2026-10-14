@@ -6,7 +6,7 @@ const movieList = document.getElementById("movieList");
 const emptyMessage = document.getElementById("emptyListMsg");
 
 const watchlist = {
-  movies: [{ title: "The Princess Bride", genre: "Adventure", watched: false }, { title: "test", genre: "test", watched: false }],
+  movies: [],
   markFinished(index) {
     this.movies[index].watched = !this.movies[index].watched;
   },

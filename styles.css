@@ -1,0 +1,12 @@
+body{
+    background-color: antiquewhite;
+    align-items: center;
+    text-align: center;
+    font-size: large;
+    font-family: fantasy;
+    color: gray;
+}
+
+p{
+    font-weight: bold;
+}
